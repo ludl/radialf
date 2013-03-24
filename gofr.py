@@ -1,5 +1,6 @@
 #
-# test of python ide for ...
+# A simple python library to calculate radial distribution functions on 1D 2D and 3D finite lattices.
+#  note: perhaps pbc will be implemented later
 #
 #  calculate some g(r) etc
 #
@@ -72,29 +73,27 @@ def calc_pairs(i,j,r,dr):
              0 otherwise.
 """
 def is_pair_distance_r(ela,elb,r,dr):
-
+   
     n=False
     d  = (ela.pos().diff(elb.pos())).norm()
-#
-# add some or loops here
-#
-#  to account for periodic boundary
-#    eg: if d1= a.image(+-x, +-y , +-z).pos - b.image(+-x, +-y , +-z).pos
-#
-#    eg: if d2= a.pos().diff(b.pos()).modulo(box).norm
-#    ....
-#
-#   check if double counting is avoided !
-#
-#
+   
     if (abs(d-r)<dr):
         n=True
     return n
 # end of calc_pairs
 
-
+""" Algorithm (version 2) to calculate number of pairs n(i,j,r,dr) for elements (i,j) from positions, it is an integer
+    pairs(i,j) are ordered
+        n(i,j,r,dr)=number of pairs(i,j) whose distance is in [r+-dr]
+       
+        i: first particle species
+        j: second particle species
+        r: distance between the species pair
+        dr: bin width
+...
+"""
 def calc_pairs_v2(i,j,r,dr):
-   
+
     nijr = 0
     ntot = 0
     for a in i.getset():
@@ -108,17 +107,50 @@ def calc_pairs_v2(i,j,r,dr):
 # end of calc_pairs_v2
 
 
-def calc_pairs_allr(i,j,r,dr):
-   
-    for r in radial_range(r,dr):
-       
-       
-        set_gijr(i,j,r,dr,gijr)
+def is_pair_dist_in_r_range(i,j,rmin,rmax,dr,d):
+
+    isit=False
+    for r in radial_range(rmin,rmax,dr):
+        if ( r+(dr/2)>d  and  d>r-(dr/2) ):
+            isit=True
+#"            self.set_gijr(i,j,r,dr,gijr)"
+#
 # end of calc_pairs_allr
+    return isit
+    
+#   TODO !
+# add some or loops here
+#
+#  to account for periodic boundary
+#    eg: if d1= a.image(+-x, +-y , +-z).pos - b.image(+-x, +-y , +-z).pos
+#
+#    eg: if d2= a.pos().diff(b.pos()).modulo(box).norm
+#    ....
+#
+#   check if double counting is avoided !
+#
+#
+        if ( r+(dr/2)>d  and  d>r-(dr/2) ):
+            isit=True
+#"            self.set_gijr(i,j,r,dr,gijr)"
+#
+# end of calc_pairs_allr
+    return isit
 
 
 def molecule:
 
 
-
+"""
+    the class particles allows to store a list of particles (molecules, atoms, ions, protons, electrons ...)
+        and their kind, position ...
+"""
 class particles:
+    
+    list_of_particles
+    
+    def get():
+    
+    def set_particles(particle_list):
+    
+    
