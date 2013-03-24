@@ -5,8 +5,7 @@
         - some functions to manipulate them (subsets etc)
 """
 def molecule:
-
-
+    
 """
 the class particles allows to store a list of particles (molecules, atoms, ions, protons, electrons ...)
 and their kind, position ...
