@@ -1,5 +1,7 @@
 """
-    the class Pair defines a pair of atoms (for use with Bond)
+    the class Pair defines a pair.
+    can be used with Atom (for use with Bond)
+            or with Stone (for Go analysis).
 """
 
 class Pair:
@@ -8,6 +10,11 @@ class Pair:
 
     second=None
 
+"""
+    initialization of the object.
+    a, and b may be any general class, usually the same.
+    this class can be used with Atom or Stone
+"""
     def __init__(self, a, b):
         first=a
         second=b
