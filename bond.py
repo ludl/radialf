@@ -18,8 +18,15 @@ class Bond:
 
     " The string for a bond is [ela,elb,dist, order]"
     def bond_toString(self)
-        bond_name="[ "+str(self.getpair())+" "+str(self.dist)+" "+str(self.order)+" ]"
+        bond_name="[ "+str(self.atoms())+" "+str(self.dist)+" "+str(self.order)+" ]"
         return bond_name
+
+    " define the behaviour of str() when called on a bond. it is : [ela,elb,dist, order]"
+    def __str__(self)
+        bond_name="[ "+str(self.atoms)+" "+str(self.dist)+" "+str(self.order)+" ]"
+        return bond_name
+
+    "dir() tells you the attributes of a class object"
 
     def __init__(self):
         
@@ -30,7 +37,7 @@ class Bond:
         set_order(n_order)
         set_bondlength(x_length)
 
-    "set atoms of the "
+    "set atoms which the bond connects."
     def __set_atoms(self,atoms):
         self.atoms=atoms
 
@@ -40,7 +47,7 @@ class Bond:
     def set_order(self,n_order):
         self.order=n_order
         
-
+    "below are get functions"
     def get_bondlength(self):
         return self.bond_length
         
@@ -48,19 +55,25 @@ class Bond:
         return self.order
 
     def get_atoms(self):
-        return [self.atom_1,self.atom_2]
+        return self.atoms
     
     def get_atom_1(self):
-        return atom_1
+        return self.atom[0]
     
     def get_atom_2(self):
-        return atom_2
+        return self.atom[1]
         
         
 #Everything looks good here; we're unable to call it. It is, in fact, 'private'. Well, actually it isn't. Running dir() on the object reveals a new magical method that python creates magically for all of your 'private' methods.
 #
 # dir(obj)
 #  gives: ['_MyClass__myPrivateMethod', '__doc__', '__module__', 'myPublicMethod']
+
+#
+# http://docs.python.org/2/reference/datamodel.html
+#
+# http://www.rafekettler.com/magicmethods.html
+#
 
 # http://www.faqs.org/docs/diveintopython/fileinfo_private.html
 #
