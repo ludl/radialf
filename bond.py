@@ -56,15 +56,19 @@ class Bond:
 
     def get_atoms(self):
         return self.atoms
-    
-    def get_atom_1(self):
-        return self.atom[0]
-    
-    def get_atom_2(self):
-        return self.atom[1]
+
+#    def get_atom_1(self):
+#        return self.atom[0]
+#    
+#    def get_atom_2(self):
+#        return self.atom[1]
         
-        
-#Everything looks good here; we're unable to call it. It is, in fact, 'private'. Well, actually it isn't. Running dir() on the object reveals a new magical method that python creates magically for all of your 'private' methods.
+# End of definitions,
+#
+# the below are comments
+
+
+# Everything looks good here; we're unable to call it. It is, in fact, 'private'. Well, actually it isn't. Running dir() on the object reveals a new magical method that python creates magically for all of your 'private' methods.
 #
 # dir(obj)
 #  gives: ['_MyClass__myPrivateMethod', '__doc__', '__module__', 'myPublicMethod']
@@ -81,3 +85,4 @@ class Bond:
 #
 #[5] Strictly speaking, private methods are accessible outside their class, just not easily accessible. Nothing in Python is truly private; internally, the names of private methods and attributes are mangled and unmangled on the fly to make them seem inaccessible by their given names. You can access the __parse method of the MP3FileInfo class by the name _MP3FileInfo__parse. Acknowledge that this is interesting, then promise to never, ever do it in real code. Private methods are private for a reason, but like many other things in Python, their privateness is ultimately a matter of convention, not force.
 
+#EOF
