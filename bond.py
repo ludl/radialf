@@ -17,8 +17,8 @@ class Bond:
     order=None
 
     " The string for a bond is [ela,elb,dist, order]"
-    def bond_toString(self,bond)
-        bond_name="[ "+bond.getpair().toString()+bond.dist+bond.order+" ]"
+    def bond_toString(self)
+        bond_name="[ "+str(self.getpair())+" "+str(self.dist)+" "+str(self.order)+" ]"
         return bond_name
 
     def __init__(self):
