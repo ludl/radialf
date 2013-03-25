@@ -8,9 +8,9 @@ class Pair:
 
     second=None
 
-    def __init__(self, ata, atb):
-        first=ata
-        second=atb
+    def __init__(self, a, b):
+        first=a
+        second=b
     # end of init(ata, atb)
 
     def getpair(self):
