@@ -19,7 +19,7 @@ class Vector:
         if(len(self.x) > 0):
             for y in self.x[:-1]:
                 st+=str(y)+", "
-                st+=str(self.x[-1])
+            st+=str(self.x[-1])
         st+=" ]"
         return st
 
@@ -78,6 +78,21 @@ class Vector:
         self.x=map(int,data.split(','))
         self.dimension=len(self.x)
 #        x_new=[]
+
+    # convert a string to a vector object
+    def fromString2(self,text):
+        
+        print 'running fromString2(text)'
+        print text
+        data=text.strip("[ ]")
+        print data
+        #for i in data.split(',')
+        self.x= [ int(i) for i in data.split(',') ]
+        print self.x
+        self.dimension=len(self.x)
+        print 'end fromString2(text)'
+#        x_new=[]
+
 
 """
  test:
