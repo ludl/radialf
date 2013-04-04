@@ -8,6 +8,7 @@
 """
 
 import math, boardgame
+import random
 # random stuff
 
 class RandomGame:
@@ -37,4 +38,10 @@ class RandomGame:
         
         number_of_moves=ran()*n*m
         
-    def 
+        ran_x=random.random()
+        
+        ran_nb=random.randint(a,b)        
+        
+    def generate_sequence(self, length):
+        
+        # blabla
