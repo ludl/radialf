@@ -1,25 +1,42 @@
+# -*- coding: utf-8 -*-
 """
   an implementation of a go board:
-    with attributes:
+  with attributes:
       - title
       - size
       - moves
       - game_commentary
+
+Created on Wed Mar 27 19:22:07 2013
+
+@author: ludl
+
 """
 
+import stone
+from vector import Vector
+
+"""
+    an implementation of a Board for a game of go
+    with attributes:
+        - a title
+        - comments
+        - size of the board        
+        - a list of moves
+"""
 class BoardGame:
-    
+
     # the title of the game
-    title
+    title=""
 
     # Comments
-    game_commentary
+    game_commentary=""
 
     # the size is a couple [n,m] usually equal
-    size
+    size=[]
 
     # the list of moves
-    moves
+    moves=[]
 
 
     def __init__(self,n=1,m=1,t="a new game",c=""):
@@ -27,6 +44,7 @@ class BoardGame:
         self.size=[n,m]
         self.moves=[]
         self.game_commentary=c
+
 
     def __str__(self):
         sts="Title: \n"
@@ -40,8 +58,9 @@ class BoardGame:
             sts+=str(m)+"\n"
         return sts
 
+
     def writeGameFile(self, file_name):
-        output=open(file_name)
+        output=open(file_name, 'w')
         output.write(str(self))
         output.close()
 
@@ -50,9 +69,9 @@ class BoardGame:
         output.write(self.make_sgf_format())
         output.close()
 
-    def add_move(stone):
-        moves.append(stone)
-        
+    def add_move(self, stone):
+        self.moves.append(stone)
+
     def setsize(self,text):
         s=[int(x) for x in text.split(',')]
         self.size=s
@@ -186,7 +205,30 @@ class BoardGame:
 #            pos.fromString(content[2].strip(" "))
             
             next_move=stone.Stone(number,color,pos)
-            self.moves.append(next_move)
+            self.moves.append(next_move)        
+        
+#
+# OLD version
+#
+#    def load_myformat(self, filename):
+#        filetext=file(filename, 'r')
+#        go_lines=filetext.readlines()
+##        go_lines=str.splitlines(filetext)
+##        go_lines=filetext.splitlines()
+#        #
+#        # TODO add the part to read the header and board size
+#        #
+#        for line in go_lines:
+#            content=line.split(None,6)
+#            
+#            number=content[2]
+#            color=content[4]
+#            pos=Vector.fromString(content[6].strip(" "))
+#            
+#            next_move=stone.Stone(number,color,pos)
+#            self.moves.append(next_move)
+#        #TODO write this
+        
         
 
 #    def read_move():
