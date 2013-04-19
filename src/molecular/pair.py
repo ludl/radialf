@@ -36,6 +36,11 @@ class Pair:
     def get_second(self)
         return second
 
+    def calc_distance(self):
+        d=self.first.position.distance(self.second.position)
+        return d
+
+
     def __str__(self):
         sp="[ "+str(first)+", "+str(second)+" ]"
         return sp
