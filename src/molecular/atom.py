@@ -31,7 +31,11 @@ class Atom:
         
     def get_velocity():
         return velocity
-        
+
+    def calc_distance(self,b):
+        d=self.position.distance(b)
+        return d
+
 # note on slicing
 #         a[i:j:k] selects all items of a with index x where x = i + n*k, n >= 0 and i <= x < j.
 #
