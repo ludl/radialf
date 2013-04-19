@@ -46,6 +46,17 @@ class Vector:
                 scal+=self.x[i]*y[i]
         return scal
 
+
+    def distance(self,y):
+        z=deepcopy(y)
+        z.times_scalar(-1.0)
+        z.add(self)
+        return z.norm()
+
+    def angle(self,y):
+        print 'not implemented yet.'
+
+
     # otherwise implement some version with the Levi-Civita tensor
     #
     # X cross Y = e(ijk) *Xi*Yj
