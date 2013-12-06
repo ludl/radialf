@@ -5,15 +5,30 @@
 #
 
 
-def histogram(board, dr=0.1):
+def histogram(game, dr=0.1):
 
-  R=board.get_Rmax
+  R=game.get_Rmax()
   N=int(R/dr)
 
   r=0
   g=[]
   
-  for loop
+  for i in range (N):
+    
+    upper=r+dr
+    g+=[0]
+    
+    for m in game:
+      for n in game:
+        dist=m.distance(n)
+        if (r<dist=<upper):
+          g[i]+=1
+    r=upper
+  return g
+
+def test_g():
+  
+  test if integral of g is equal to the number of moves? (squared?)
 
 
 def conversions:
