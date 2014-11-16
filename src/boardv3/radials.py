@@ -21,14 +21,17 @@ def make_gofr(graph_name,boardg):
     #z=my_radial(game, dr=2.0)
     z=my_radial(game,gsize, dr)
     plot(graph_name+'_all',z)
+    writeRadials(graph_name+'_all_data',z)
         
     black_game=game[0::2]
     v=my_radial(black_game,gsize, dr)
-    plot(graph_name+'_black',z)
+    plot(graph_name+'_black',v)
+    writeRadials(graph_name+'_bb_data',v)
 
     white_game=game[1::2]
     w=my_radial(white_game,gsize, dr)
-    plot(graph_name+'_white',z)
+    plot(graph_name+'_white',w)
+    writeRadials(graph_name+'_ww_data',w)
     
     return z
     
@@ -130,6 +133,20 @@ def test_g():
 #  ordinals=[0,1, ...i,i+1...]
 #  r=[0,dr,2dr, ... Rmax]
 #
+
+def writeRadials(outfile,rg):
+
+    f=file(outfile+'.txt','w')
+    
+    [r,g]=rg
+    i=0
+    for x in r:
+        
+        my_s=' {0:15.10f} {1:15.10f} '.format(x,g[i])
+        f.write(my_s)
+        i+=1
+    f.close()
+
 
 def plot(outfile,rg):
         #a=1
